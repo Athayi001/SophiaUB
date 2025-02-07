@@ -4,7 +4,7 @@ VAR_SESSION = "BQGgICIAvmPbLs3zFpomt-mB8UNSW7yBJNU7wlW0CcL1T9c14eaqFtOVw40fuxjGk
 VAR_API_ID = "27271202"
 VAR_API_HASH = "56203bce7155c75df97a8d8e968ea850"
 VAR_MONGO_DB_URI = "mongodb+srv://knight_rider:GODGURU12345@knight.jm59gu9.mongodb.net/?retryWrites=true&w=majority"
-VAR_TOKEN = ""
+VAR_TOKEN = "7809332374:AAFlNFEclg7wQAjulncf9oROmLRlqhS_324"
 VAR_REPO_URL = "https://github.com/Athayi001/SophiaUB/" # Change to your fork repo
 DEVELOPER_MODE = True
 
