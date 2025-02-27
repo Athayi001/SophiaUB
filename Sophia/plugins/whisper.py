@@ -36,15 +36,15 @@ async def send_whisper(_, query):
     data_dict = {line.split(":", 1)[0].strip(): line.split(":", 1)[1].strip() for line in data_lines}
     wid = await whs.add(data_dict['message'], int(data_dict['id']))
     mention = f"tg://user?id={data_dict['id']}"
-    button = InlineKeyboardMarkup([[InlineKeyboardButton("View 🔓", callback_data=f"wh: {wid}")]])
+    to_user = f"**🦋 To:** @{data_dict['username']}" if data_dict['username'] != "Nothing" else ""
     result = InlineQueryResultArticle(
       title="Whisper message",
       input_message_content=InputTextMessageContent(
-        f"🔒 A whisper message to [{data_dict['name']}]({mention}), only they can open it.\n\n{f'**🦋 To:** @{data_dict['username']}' if data_dict['username'] != 'Nothing' else ''}\n**👾 By:** SophiaUB",
+        f"🔒 A whisper message to [{data_dict['name']}]({mention}), only they can open it.\n\n{to_user}\n**👾 By:** SophiaUB",
         parse_mode=enums.ParseMode.MARKDOWN,
         disable_web_page_preview=True
       ),
-      reply_markup=button
+      reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("View 🔓", callback_data=f"wh: {wid}")]])
     )
     await query.answer([result])
   except:
