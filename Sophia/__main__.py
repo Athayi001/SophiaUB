@@ -5,26 +5,27 @@ import os
 from pyrogram import idle
 from subprocess import getoutput as r
 from Restart import restart_program
+import asyncio 
 
 PWD = f"{os.getcwd()}/"
 my_id = None
 
+async def fk():
+  await Sophia.start()
+  await SophiaBot.start()
+  try:
+    await SophiaBot.send_photo(
+      Sophia.me.id,
+      photo="https://i.imgur.com/DuoscLX.jpeg",
+      caption=(
+        f"**✅ Sophia started ⚡**\n\n"
+        f"**👾 Version:** {MY_VERSION}\n"
+        f"**🥀 Python:** {r('python --version').lower().split('python ')[1]}\n"
+        f"**🐬 Owner:** {Sophia.me.first_name if not Sophia.me.last_name else f'{Sophia.me.first_name} {Sophia.me.last_name}'}\n"
+        f"**🦋 Join:** __@Hyper_speed0 & @FutureCity005__"
+      )
+    )
+  except: pass
+  await idle()
 if __name__ == "__main__":
-    Sophia.start()
-    SophiaBot.start()
-    try:
-        if 143 == 143:
-            SophiaBot.send_photo(
-                Sophia.me.id,
-                photo="https://i.imgur.com/DuoscLX.jpeg",
-                caption=(
-                    f"**✅ Sophia started ⚡**\n\n"
-                    f"**👾 Version:** {MY_VERSION}\n"
-                    f"**🥀 Python:** {r('python --version').lower().split('python ')[1]}\n"
-                    f"**🐬 Owner:** {Sophia.me.first_name if not Sophia.me.last_name else f'{Sophia.me.first_name} {Sophia.me.last_name}'}\n"
-                    f"**🦋 Join:** __@Hyper_speed0 & @FutureCity005__"
-                )
-            )
-    except:
-        pass
-    idle()
+    asyncio.get_event_loop().run_until_complete(fk())
